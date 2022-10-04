@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.description   = 'This allows you to connect to Vipassana identity server with your ruby app'
   gem.authors       = ['Dhamma workers']
   gem.email         = ['sebastian.castro@dhamma.org', 'ryan.johnson@dhamma.org']
-  # gem.homepage      = 'https://identity.server.dhamma.org/'
+  gem.homepage      = 'https://github.com/dhammaorg/omniauth-vis'
 
   gem.files         = `git ls-files`.split("\n")
   gem.require_paths = ['lib']
