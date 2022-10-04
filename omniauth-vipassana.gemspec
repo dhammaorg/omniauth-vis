@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name          = 'omniauth-vipassana'
-  gem.version       = '0.0.1'
+  gem.version       = '0.0.2'
   # gem.license       = 'MIT'
   gem.summary       = 'Helper to connect to Vipassna Identity Server'
   gem.description   = 'This allows you to connect to Vipassana identity server with your ruby app'
@@ -13,5 +13,5 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split("\n")
   gem.require_paths = ['lib']
 
-  gem.add_runtime_dependency 'omniauth-oauth2', '~> 1.8.0'
+  gem.add_runtime_dependency 'omniauth-oauth2', '~> 1.2'
 end
