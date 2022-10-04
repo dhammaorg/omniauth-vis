@@ -40,6 +40,8 @@ You first need to install `omniauth-oauth2` gem, then add a new provider :
 ```
 # config/initializers/omniauth.rb
 
+require "omniauth/strategies/vis"
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :vis, Rails.application.config.vis["app_id"], Rails.application.config.vis["app_secret"],
     {
@@ -53,6 +55,7 @@ end
 `Vis::Api` will implement [Oauth2 Client Credentials Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) behind the scene
 
 ```
+require "vis/api"
 @vis_api = Vis::Api.new
 @vis_service.get("api_path")
 @vis_service.post("api_path", data)
