@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-require File.expand_path(
-  File.join('..', 'lib', 'omniauth', 'vipassana', 'version'),
-  __FILE__
-)
-
 Gem::Specification.new do |gem|
   gem.name          = 'omniauth-vipassana'
   gem.version       = '0.0.1'
