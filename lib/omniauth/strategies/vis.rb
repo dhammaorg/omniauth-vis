@@ -5,7 +5,7 @@ require 'omniauth/strategies/oauth2'
 module OmniAuth
   module Strategies
     class Vis < OmniAuth::Strategies::OAuth2
-      option :name, :vipassana
+      option :name, :vis
 
       option :client_options,
         site: Rails.application.config.vis['app_url'],

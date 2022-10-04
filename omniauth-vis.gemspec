@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |gem|
-  gem.name          = 'omniauth-vipassana'
+  gem.name          = 'omniauth-vis'
   gem.version       = '0.0.2'
   # gem.license       = 'MIT'
   gem.summary       = 'Helper to connect to Vipassna Identity Server'

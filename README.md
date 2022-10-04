@@ -1,4 +1,4 @@
-# omniauth-vipassana
+# omniauth-vis
 
 This small gem will help Rails apps to connect to Vipassana Identity Server (VIS) using Auth2
 
@@ -18,13 +18,13 @@ Contact VIS administrators (sebastian.castro@dhamma.org, ryan.johnson@dhamma.org
 ## Install the gem
 
 ```
-gem add omniauth-vipassana
+gem add omniauth-vis
 ```
 
 ## Configure
 
 ```
-# config/initializers/omniauth-vipassana.rb
+# config/initializers/vis.rb
 
 Rails.application.config.vis = {
   app_id: "APP_ID_PROVIDED",
