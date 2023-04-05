@@ -72,3 +72,10 @@ Vis::Api.new.post("/api/v1/users", {
   encrypted_password: "xxxxxxxxxx"
 })
 ```
+
+## Developers, how to publish new version of the gem
+
+```
+gem build omniauth-vis
+gem push omniauth-vis-X.X.X.gem
+```
