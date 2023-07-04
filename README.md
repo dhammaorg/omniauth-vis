@@ -27,9 +27,9 @@ gem add omniauth-vis
 # config/initializers/vis.rb
 
 Rails.application.config.vis = {
+  server_url: "https://identity.dhamma.org/"
   app_id: "APP_ID_PROVIDED",
   app_secret: "APP_SECRET_PROVIDED",
-  app_url: "https://identity.server.dhamma.org/"
 }
 ```
 
@@ -43,10 +43,7 @@ You first need to install `omniauth-oauth2` gem, then add a new provider :
 require "omniauth/strategies/vis"
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :vis, Rails.application.config.vis["app_id"], Rails.application.config.vis["app_secret"],
-    {
-      scope: "default"
-    }
+  provider :vis, Rails.application.config.vis["app_id"], Rails.application.config.vis["app_secret"]
 end
 ```
 

@@ -8,24 +8,18 @@ module OmniAuth
       option :name, :vis
 
       option :client_options,
-        site: Rails.application.config.vis['app_url'],
+        site: Rails.application.config.vis['server_url'],
         authorize_path: '/oauth/authorize'
+
+      option :scope, 'default'
 
       def on_path?(path)
         current_path.squeeze('/').casecmp(path.squeeze('/')).zero?
       end
 
       def setup_phase
-        # Authorize extra params
-        authorized_params = [
-          :locale, :iframe,
-          :allow_sign_up, :allowed_external_providers, :confirm_identity,
-          :app_name, :login_title, :login_message,
-          :back_button, :back_button_text, :back_button_url,
-          :extra_agreement_title, :extra_agreement_text]
-        authorized_params.each do |param|
-          request.env['omniauth.strategy'].options[:authorize_params][param] = request.params[param.to_s]
-        end
+        # Authorize all params to be passed to VIS
+        request.env['omniauth.strategy'].options[:authorize_params] = request.params.to_h
       end
 
       uid do
