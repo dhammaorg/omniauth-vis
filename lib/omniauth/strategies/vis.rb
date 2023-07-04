@@ -17,8 +17,12 @@ module OmniAuth
 
       def setup_phase
         # Authorize extra params
-        authorized_params = [:locale, :confirm_identity, :allow_sign_up, :app_name,
-          :allowed_external_providers, :extra_agreement_title, :extra_agreement_text]
+        authorized_params = [
+          :locale, :iframe,
+          :allow_sign_up, :allowed_external_providers, :confirm_identity,
+          :app_name, :login_title, :login_message,
+          :back_button, :back_button_text, :back_button_url,
+          :extra_agreement_title, :extra_agreement_text]
         authorized_params.each do |param|
           request.env['omniauth.strategy'].options[:authorize_params][param] = request.params[param.to_s]
         end
