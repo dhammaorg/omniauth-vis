@@ -2,10 +2,10 @@
 # gets tokens so we can use the VIS API
 module Vis
   class Api
-    def initialize
-      @client_id = Rails.application.config.vis["app_id"]
-      @client_secret = Rails.application.config.vis["app_secret"]
-      @vis_app_url = Rails.application.config.vis["app_url"]
+    def initialize(server_url: "https://identity.dhamma.org", client_id:, client_secret:)
+      @client_id = client_id
+      @client_secret = client_secret
+      @vis_app_url = server_url
       @use_ssl = !Rails.env.development?
     end
 
@@ -30,10 +30,8 @@ module Vis
     end
 
     private def token_post
-      # uri = URI.parse("#{@vis_app_url})
       http_client, uri = http_client_and_uri "/oauth/token"
       request = Net::HTTP::Post.new(uri.request_uri)
-      # request.set_form_data({ "client_id" => @client_id, "client_secret" => @client_secret,
       request.set_form_data({ "client_id" => @client_id, "client_secret" => @client_secret,
         "grant_type" => "client_credentials" })
       http_client.request(request)

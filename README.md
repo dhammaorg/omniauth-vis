@@ -53,17 +53,17 @@ end
 
 ```
 require "vis/api"
-@vis_api = Vis::Api.new
-@vis_service.get("api_path")
-@vis_service.post("api_path", data)
+@vis_api = Vis::Api.new(client_id: "xx", client_secret: "xx", server_url: "https://identity.dhamma.org")
+@vis_api.get("api_path")
+@vis_api.post("api_path", data)
 ```
 
-Documentation about available api can be found at [https://identity.server.dhamma.org/doc](https://identity.server.dhamma.org/doc)
+Documentation about available api can be found at [https://test.identity.dhamma.org/doc](https://test.identity.dhamma.org/doc)
 
 Example
 
 ```
-Vis::Api.new.post("/api/v1/users", {
+@vis_api.post("/api/v1/users", {
   email: "email@test.com",
   username: "test",
   encrypted_password: "xxxxxxxxxx"
