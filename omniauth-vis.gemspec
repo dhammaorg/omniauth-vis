@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name          = 'omniauth-vis'
-  gem.version       = '0.0.8'
+  gem.version       = '0.1.0'
   # gem.license       = 'MIT'
   gem.summary       = 'Helper to connect to Vipassna Identity Server'
   gem.description   = 'This allows you to connect to Vipassana identity server with your ruby app'
