@@ -12,30 +12,16 @@ Contact VIS administrators (sebastian.castro@dhamma.org, ryan.johnson@dhamma.org
 
 - Name
 - Home page url
-- Logo url
 - Authorized callback urls (example: https://myapp.org/users/auth/vis/callback)
 
 ## Install the gem
 
 ```
+gem add omniauth
 gem add omniauth-vis
 ```
 
-## Configure
-
-```
-# config/initializers/vis.rb
-
-Rails.application.config.vis = {
-  server_url: "https://identity.dhamma.org/"
-  app_id: "APP_ID_PROVIDED",
-  app_secret: "APP_SECRET_PROVIDED",
-}
-```
-
 ## Use omniauth strategy
-
-You first need to install `omniauth-oauth2` gem, then add a new provider :
 
 ```
 # config/initializers/omniauth.rb
@@ -45,6 +31,15 @@ require "omniauth/strategies/vis"
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :vis, Rails.application.config.vis["app_id"], Rails.application.config.vis["app_secret"]
 end
+```
+
+### Customize VIS server
+
+In case you need to work with a custom server, for exmaple a staging server, you can use server_url option
+```
+provider :vis, Rails.application.config.vis["app_id"], Rails.application.config.vis["app_secret"], {
+  server_url: "https://test.identity.dhamma.org"
+}
 ```
 
 ## Use VIS API
@@ -58,7 +53,7 @@ require "vis/api"
 @vis_api.post("api_path", data)
 ```
 
-Documentation about available api can be found at [https://test.identity.dhamma.org/doc](https://test.identity.dhamma.org/doc)
+Documentation about available api can be found at [https://identity.dhamma.org/doc](https://identity.dhamma.org/doc)
 
 Example
 
