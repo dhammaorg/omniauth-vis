@@ -8,18 +8,18 @@ module OmniAuth
       option :name, :vis
 
       option :client_options,
-        site: Rails.application.config.vis['server_url'],
         authorize_path: '/oauth/authorize'
 
       option :scope, 'default'
 
-      def on_path?(path)
-        current_path.squeeze('/').casecmp(path.squeeze('/')).zero?
-      end
+      option :server_url, "https://identity.dhamma.org"
 
       def setup_phase
+        # configure Oauth2 client_options.site from a custom server_url option
+        options.client_options.site = options.server_url
+
         # Authorize all params to be passed to VIS
-        request.env['omniauth.strategy'].options[:authorize_params] = request.params.to_h
+        options.authorize_params = request.params.to_h
       end
 
       uid do
@@ -28,6 +28,11 @@ module OmniAuth
 
       info do
         raw_info
+      end
+
+      # Fix strange bugs with urls containing double / like dhamma.org//oauth/callback
+      def on_path?(path)
+        current_path.squeeze('/').casecmp(path.squeeze('/')).zero?
       end
 
       # to fix always getting invalid_grant error
