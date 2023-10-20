@@ -13,6 +13,7 @@ module OmniAuth
       option :scope, 'default'
 
       option :server_url, "https://identity.dhamma.org"
+      option :jwt_shared_secret, nil
 
       def setup_phase
         # configure Oauth2 client_options.site from a custom server_url option
@@ -42,7 +43,20 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/api/v1/me.json').parsed
+        return @raw_info if @raw_info.present?
+
+        @raw_info = if options.jwt_shared_secret.present?
+                      # get info from the JWT token, so we save an API call
+                      JWT.decode(
+                        access_token.token,
+                        options.jwt_shared_secret,
+                        true,
+                        { algorithm: "hs512" }
+                      ).first["user"]
+                    else
+                      # get info from API
+                      access_token.get("/api/v1/me.json").parsed
+                    end
       end
     end
   end
