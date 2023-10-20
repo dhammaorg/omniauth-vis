@@ -1,6 +1,8 @@
 # Vipassna Identity Server Service - for server to server Oauth 2 client_credentials grant flow
 # gets tokens so we can use the VIS API
 module Vis
+  class OauthError < StandardError;  end
+
   class Api
     def initialize(server_url: "https://identity.dhamma.org", client_id:, client_secret:)
       @client_id = client_id
@@ -24,7 +26,7 @@ module Vis
     private def check_error!(response_code, response_body_hash)
       return unless response_body_hash["error"].present? || !response_code.in?(["200", "202"]) # 201 ?
 
-      raise Exceptions::VisOauthError,
+      raise Vis::OauthError,
         "#{response_code} Error requesting token from Vipassana Identity Server. "\
         "#{response_body_hash['error']} #{response_body_hash['error_description']}"
     end
