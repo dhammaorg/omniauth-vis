@@ -4,7 +4,7 @@ Gem::Specification.new do |gem|
   gem.name          = 'omniauth-vis'
   gem.version       = '0.1.4'
   # gem.license       = 'MIT'
-  gem.summary       = 'Helper to connect to Vipassna Identity Server'
+  gem.summary       = 'Helper to connect to Vipassana Identity Server'
   gem.description   = 'This allows you to connect to Vipassana identity server with your ruby app'
   gem.authors       = ['Dhamma workers']
   gem.email         = ['sebastian.castro@dhamma.org', 'ryan.johnson@dhamma.org']

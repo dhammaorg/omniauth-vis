@@ -1,4 +1,4 @@
-# Vipassna Identity Server Service - for server to server Oauth 2 client_credentials grant flow
+# Vipassana Identity Server Service - for server to server Oauth 2 client_credentials grant flow
 # gets tokens so we can use the VIS API
 module Vis
   class OauthError < StandardError;  end
