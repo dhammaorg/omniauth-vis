@@ -53,7 +53,8 @@ require "vis/api"
 @vis_api.post("api_path", data)
 ```
 
-Documentation about available api can be found at [https://identity.dhamma.org/doc](https://identity.dhamma.org/doc)
+The API documentation can be found at [https://identity.dhamma.org/doc](https://identity.dhamma.org/doc).
+It is automatically generated from the VIS API Users Controller code deployed on production, through the `apipie-rails` gem.
 
 Example
 
@@ -68,6 +69,8 @@ Example
 ## Developers, how to publish new version of the gem
 
 ```
-gem build omniauth-vis
-gem push omniauth-vis-X.X.X.gem
+* update the `CHANGELOG.md` file, see https://keepachangelog.com
+* increase `gem.version` in `omniauth-vis.gemspec`
+* `gem build omniauth-vis`
+* `gem push omniauth-vis-X.X.X.gem`
 ```

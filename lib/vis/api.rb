@@ -45,6 +45,12 @@ module Vis
       return_response(response)
     end
 
+    def delete(path)
+      http_client, uri = http_client_and_uri path
+      response = http_client.delete(uri, headers)
+      return_response(response)
+    end
+
     def post(path, post_params_hash)
       http_client, uri = http_client_and_uri path
       response = http_client.post(uri, post_params_hash.to_json, headers)
