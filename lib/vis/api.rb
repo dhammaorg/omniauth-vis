@@ -35,7 +35,7 @@ module Vis
       http_client, uri = http_client_and_uri "/oauth/token"
       request = Net::HTTP::Post.new(uri.request_uri)
       request.set_form_data({ "client_id" => @client_id, "client_secret" => @client_secret,
-        "grant_type" => "client_credentials" })
+        "grant_type" => "client_credentials", "scope" => "default" })
       http_client.request(request)
     end
 
