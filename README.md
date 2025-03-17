@@ -65,9 +65,17 @@ Example
   encrypted_password: "xxxxxxxxxx"
 })
 ```
-## Developers, how to publish new version of the gem
+## Developers
 
+Publish a new version of the gem:
 * update the `CHANGELOG.md` file, see https://keepachangelog.com
 * increase `gem.version` in `omniauth-vis.gemspec`
+* `git commit -a "Bump x.y.z"`
+* `git push`
 * `gem build omniauth-vis`
-* `gem push omniauth-vis-X.X.X.gem`
+* `gem push omniauth-vis-x.y.z.gem`
+
+To use a non-published-yet code of the gem, e.g., the head of `main`:
+* update your application's `Gemfile` to use `gem "omniauth-vis", git: "git@github.com:dhammaorg/omniauth-vis.git"`
+* run `bundle update omniauth-vis` (to run within Docker if you use Docker)
+* restart your web server
