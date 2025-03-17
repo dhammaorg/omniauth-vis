@@ -65,12 +65,9 @@ Example
   encrypted_password: "xxxxxxxxxx"
 })
 ```
-
 ## Developers, how to publish new version of the gem
 
-```
 * update the `CHANGELOG.md` file, see https://keepachangelog.com
 * increase `gem.version` in `omniauth-vis.gemspec`
 * `gem build omniauth-vis`
 * `gem push omniauth-vis-X.X.X.gem`
-```
